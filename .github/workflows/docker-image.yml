@@ -1,31 +1,14 @@
-name: Masking Secret Example
+name: print
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
+on: push
+env:
+  continue: true
+  time: 3
 jobs:
-  bash-example:
+  job1:
     runs-on: ubuntu-latest
     steps:
-     - name: Set the value in bash
-       id: step_one
-       run: |
-           {
-            echo 'JSON_RESPONSE<<EOF'
-            curl https://example.com
-            echo EOF
-           } >> "$GITHUB_ENV"
-
-     - name: environment varialbe value
-       run: echo "$JSON_RESPONSE"
-     - name: Job summary
-       run: echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
-
-
-
-
-       
-
+      - continue-on-error: ${{ fromJSON(env.continue) }}
+        timeout-minutes: ${{ fromJSON(env.time) }}
+        run: echo ...
+  
