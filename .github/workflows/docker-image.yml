@@ -12,3 +12,5 @@ jobs:
         run: echo "good morning $MY_GLOBAL_ENV $MY_JOB_ENV. Today is $MY_STEP_ENV"
         env:
           MY_STEP_ENV: Monday
+      - name: Listing all the env variables for such workflow
+        run: env
