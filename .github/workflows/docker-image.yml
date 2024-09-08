@@ -1,12 +1,15 @@
-name: print
-on: push
+name: Environment Variable for single workflow
+on:
+  workflow_dispatch
 env:
-  continue: true
-  time: 3
+  MY_GLOBAL_ENV: Ravinder
 jobs:
-  job1:
+  greeting_job:
     runs-on: ubuntu-latest
+    env:
+      MY_JOB_ENV: Nangal
     steps:
-      - continue-on-error: ${{ fromJSON(env.continue) }}
-        timeout-minutes: ${{ fromJSON(env.time) }}
-        run: echo ...
+      - name: "Say hello ravinder nangal"
+        run: echo "good morning $MY_GLOBAL_ENV $MY_JOB_ENV. Today is $MY_STEP_ENV"
+        env:
+          MY_STEP_ENV: Monday
