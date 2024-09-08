@@ -10,5 +10,8 @@ jobs:
   bash-example:
     runs-on: ubuntu-latest
     steps:
-      - name: Group of log lines
-        run: echo "::add-mask::${{ vars.MY_NAME }}"
+      - name: Mask variable
+        run: |
+          echo "::add-mask::${{ vars.MY_NAME }}"
+          echo "Masked value is set."
+
