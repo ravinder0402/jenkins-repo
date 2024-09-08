@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Group of log lines
-        run: echo "${{ MY_NAME }}"
+        run: echo "${{ vars.MY_NAME }}"
