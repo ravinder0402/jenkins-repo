@@ -13,7 +13,7 @@ jobs:
       - name: Mask secret
         run: |
              echo "MY_ENV_VAR=Sapna Tanwar" >> $GITHUB_ENV
-             echo "$MY_ENV_VAR"
+             echo "${{ MY_ENV_VAR }}"
 
 
        
