@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Mask secret
         run: |
-          echo "::add-mask::${{ secrets.MY_NAME }}"
+          echo "::add-mask::${{ vars.MY_NAME }}"
           echo "Masked value is set."
 
 
