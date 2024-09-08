@@ -9,9 +9,11 @@ on:
 jobs:
   bash-example:
     runs-on: ubuntu-latest
+    env:
+      MY_NAME: "Mona The Octocat"
     steps:
-      - name: Mask variable
-        run: |
-          echo "::add-mask:: Ravinder nangal"
+      - name: bash-version
+        run: echo "::add-mask::$MY_NAME"
+
        
 
