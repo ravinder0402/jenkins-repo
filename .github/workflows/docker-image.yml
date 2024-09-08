@@ -21,6 +21,8 @@ jobs:
 
      - name: environment varialbe value
        run: echo "$JSON_RESPONSE"
+     - name: Job summary
+       run: echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
 
 
 
