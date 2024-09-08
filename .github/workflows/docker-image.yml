@@ -1,4 +1,4 @@
-name: Grouping log line
+name: Masking Secret Example
 
 on:
   push:
@@ -9,11 +9,12 @@ on:
 jobs:
   bash-example:
     runs-on: ubuntu-latest
-    env:
-      MY_NAME: "Mona The Octocat"
     steps:
-      - name: bash-version
-        run: echo "::add-mask::$MY_NAME"
+      - name: Mask secret
+        run: |
+          echo "::add-mask::${{ secrets.MY_NAME }}"
+          echo "Masked value is set."
+
 
        
 
