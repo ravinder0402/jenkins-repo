@@ -1,6 +1,5 @@
 name: Environment Variable for single workflow
-on:
-  workflow_dispatch
+on: push
 env:
   MY_GLOBAL_ENV: Ravinder
 jobs:
