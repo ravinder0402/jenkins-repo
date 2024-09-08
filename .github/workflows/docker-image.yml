@@ -11,8 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Group of log lines
-        run: |
-            echo "::group::My title"
-            echo "Ravinder Nangal"
-            echo "::endgroup::"
-
+        run: echo "::notice file=temp.js, line=1, col=3, endColumn=7::Missing weekend"
