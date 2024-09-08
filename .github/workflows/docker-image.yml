@@ -12,8 +12,8 @@ jobs:
     steps:
       - name: Mask secret
         run: |
-             stopMaker=$(uuidgen)
-             echo "$stopMaker"
+             echo "MY_ENV_VAR=Sapna Tanwar" >> $GITHUB_ENV
+             echo "$MY_ENV_VAR"
 
 
        
