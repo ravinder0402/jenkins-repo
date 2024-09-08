@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Group of log lines
-        run: echo "${{ vars.MY_NAME }}"
+        run: echo "::add-mask::${{ vars.MY_NAME }}"
