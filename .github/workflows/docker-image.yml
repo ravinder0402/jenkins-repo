@@ -12,6 +12,6 @@ jobs:
     steps:
       - name: Mask variable
         run: |
-          echo "::add-mask::${{ vars.MY_NAME }}"
-          echo "Masked value is set."
+          echo "::add-mask:: Ravinder nangal"
+       
 
