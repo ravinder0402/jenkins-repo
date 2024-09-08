@@ -12,8 +12,8 @@ jobs:
     steps:
       - name: Mask secret
         run: |
-             stopMarker=$(uuidgen)
-             echo "$stopMarker"
+             stopMaker=$(uuidgen)
+             echo "$stopMaker"
 
 
        
