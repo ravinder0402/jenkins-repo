@@ -10,10 +10,18 @@ jobs:
   bash-example:
     runs-on: ubuntu-latest
     steps:
-      - name: Mask secret
-        run: echo "MY_ENV_VAR=Tanwar" >> $GITHUB_ENV
-      - name : Assessing environment variable value
-        run: echo "$MY_ENV_VAR"
+     - name: Set the value in bash
+       id: step_one
+       run: |
+           {
+            echo 'JSON_RESPONSE<<EOF'
+            curl https://example.com
+            echo EOF
+           } >> "$GITHUB_ENV"
+
+     - name: environment varialbe value
+       run: echo "$JSON_RESPONSE"
+
 
 
        
