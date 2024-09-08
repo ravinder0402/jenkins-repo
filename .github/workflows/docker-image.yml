@@ -9,9 +9,17 @@ env:
 jobs:
   job1:
     runs-on: ubuntu-latest
-    continue-on-error: ${{ env.CONTINUE == 'true' }}  
-    timeout-minutes: ${{ env.TIME }} 
+    # continue-on-error cannot use dynamic expressions or environment variables directly
+    continue-on-error: true  # Set to a fixed boolean value if needed
+    
+    timeout-minutes: 3  # Direct value; could be adjusted as needed
 
     steps:
-      - name: Print something
-        run: echo "This is a step that might fail"
+      - name: Check environment variable and handle error
+        run: |
+          echo "This is a step that might fail"
+          # You can use environment variables within steps
+        continue-on-error: ${{ env.CONTINUE == 'true' }}  # Within step
+
+      - name: Another step
+        run: echo "This step will always run"
