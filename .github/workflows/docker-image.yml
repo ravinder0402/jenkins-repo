@@ -12,8 +12,8 @@ jobs:
     steps:
       - name: Mask secret
         run: |
-          echo "::add-mask::${{ vars.MY_NAME }}"
-          echo "Masked value is set."
+             stopMaker=$(uuidgen)
+             echo"$stopMaker"
 
 
        
