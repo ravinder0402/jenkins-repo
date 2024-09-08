@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Group of log lines
-        run: echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
+        run: echo "$MY_NAME"
