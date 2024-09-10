@@ -2,7 +2,6 @@ name: CI
 on: push
 jobs: 
   prod-check:
-    if: ${{ github.ref == 'ref/heads/main' }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Deploying to production server on branch $GITHUB_REF"
+      - run: echo "$GITHUB.REF"
