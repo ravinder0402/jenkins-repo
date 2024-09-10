@@ -1,16 +1,8 @@
-name: Environment Variable for single workflow
+name: CI
 on: push
-env:
-  MY_GLOBAL_ENV: Ravinder
-jobs:
-  greeting_job:
+jobs: 
+  prod-check:
+    if: ${{ github.ref == 'ref/heads/main' }}
     runs-on: ubuntu-latest
-    env:
-      MY_JOB_ENV: Nangal
     steps:
-      - name: "Say hello ravinder nangal"
-        run: echo "good morning $MY_GLOBAL_ENV $MY_JOB_ENV. Today is $MY_STEP_ENV"
-        env:
-          MY_STEP_ENV: Monday
-      - name: Listing all the env variables for such workflow
-        run: env
+      - run: echo "Deploying to production server on branch $GITHUB_REF"
