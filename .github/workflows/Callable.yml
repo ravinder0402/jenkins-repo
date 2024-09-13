@@ -1,22 +1,22 @@
-name: Callable Workflow
-
-on: 
+name: Reusable Workflow
+on:
   workflow_call:
-    inputs:
-      name: 
-        description: 'Name for greeting'
-        required: true
-        type: 'string'
     outputs:
-      greetingMessage: 
-        description: 'Generated greeting message'
-        value: ${{ jobs.greet.outputs.message }}
+      firstword:
+        description: "The first output stirng"
+        value: ${{ jobs.resuable_id.outputs.output1 }}
+      secondword:
+        description: "The second output string"
+        value: ${{ jobs.reusable_id.outputs.output2 }}
 
 jobs:
-  greet:
+  resuable_id: 
     runs-on: ubuntu-latest
     outputs:
-      message: ${{ steps.greeting.outputs.message }}
+      output1: ${{ steps.step1.output.firstword }}
+      output2: ${{ steps.step1.output.secondword }}
     steps:
-    - id: greeting
-      run: echo "::set-output name=message::Hello, ${{ inputs.name }}"
+      - id: step1
+        run: echo "firstword=Ravinder" >> $GITHUB_OUTPUT
+      - id: step2
+        run: echo "secondword=Rawat" >> $GITHUB_OUTPUT
