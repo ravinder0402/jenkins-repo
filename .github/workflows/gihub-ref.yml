@@ -12,3 +12,6 @@ jobs:
     - name: Extract Branch Name
       if: startsWith(github.ref, 'refs/heads/')
       run: echo "Branch Name:${{ github.ref }}" | sed 's|refs/heads/||'
+    - name: Extracting Tag Name
+      if: startsWith(github.ref, 'refs/tags/')
+      run: echo "Tag Name:${{ github.ref }}" | 's|refs/tags/||'
