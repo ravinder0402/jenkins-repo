@@ -1,7 +1,14 @@
 name: Calling Workflow
+
 on: [push]
+
 jobs:
   useCallable:
-    uses: ./.github/workflows/docker-image.yml
+    uses: ./.github/workflows/callable_workflow.yml
     with:
-      name: 'Ravinder'
+      name: 'Jimin'
+    outputs:
+      greetingMessage: ${{ needs.useCallable.outputs.greetingMessage }}
+    steps:
+      - name: Display greeting
+        run: echo "${{ needs.useCallable.outputs.greetingMessage }}"
