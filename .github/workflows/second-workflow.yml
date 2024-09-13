@@ -1,13 +1,7 @@
-name: Second workflow
-on: 
-  workflow_run:
-    workflows: ["First Workflow"]
-    types:
-      - completed
+name: Calling Workflow
+on: [push]
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-     - name: Deploy
-       run: echo "Deploying the project.."
+  useCallable:
+    uses: ./.github/workflows/docker-image.yml
+    with:
+      name: 'Ravinder'
