@@ -1,0 +1,7 @@
+name: Calling Workflow
+on: [push]
+jobs:
+  useCallable:
+    uses: ./.github/workflows/Callable.yml
+    with:
+      name: 'Ravinder'
