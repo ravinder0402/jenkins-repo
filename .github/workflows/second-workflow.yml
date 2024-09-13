@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   useCallable:
-    uses: ./.github/workflows/callable_workflow.yml
+    uses: ./.github/workflows/docker-image.yml
     with:
       name: 'Jimin'
 
