@@ -10,11 +10,11 @@ on:
         value: ${{ jobs.reusable_id.outputs.output2 }}
 
 jobs:
-  resuable_id: 
+  resuable_id:
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.step1.output.firstword }}
-      output2: ${{ steps.step1.output.secondword }}
+      output1: ${{ steps.step1.outputs.firstword }}
+      output2: ${{ steps.step1.outputs.secondword }}
     steps:
       - id: step1
         run: echo "firstword=Ravinder" >> $GITHUB_OUTPUT
