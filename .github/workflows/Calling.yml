@@ -3,7 +3,7 @@ on:
  workflow_dispatch:
 jobs:
   job1:
-    uses: ./.github/workflows/Callable.yaml
+    uses: ./.github/workflows/Callable.yml
   job2:
     runs-on: ubuntu-latest
     needs: job1
