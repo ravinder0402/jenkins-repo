@@ -1,7 +1,11 @@
-name: Calling Workflow
-on: [push]
+name: Calling a reusable workflow
+on:
+ workflow_dispatch:
 jobs:
-  useCallable:
-    uses: ./.github/workflows/Callable.yml
-    with:
-      name: 'Ravinder'
+  job1:
+    uses: ./.github/workflows/Callable.yaml
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+    - run: echo ${{ needs.job1.output.firsword }}
