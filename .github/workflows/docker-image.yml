@@ -1,11 +1,20 @@
-name: First workflow
-on: [push]
+name: Callable Workflow
+
+on: 
+  workflow_call:
+    inputs:
+      name: 
+        description: 'Name for greeting'
+        required: true
+        type: 'string'
+    outputs:
+      greetingMessage: 
+        description: 'Generated greeting message'
+        value: ${{ steps.greeting.outputs.message }}
+
 jobs:
-  build:
+  greet:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout code
-      uses: actions/checkout@v2
-
-    - name: Build
-      run: echo "Building the project.."
+    - id: greeting
+      run: echo "::set-output name=message::Hello, ${{ inputs.name }}"
