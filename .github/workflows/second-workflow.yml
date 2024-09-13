@@ -7,8 +7,4 @@ jobs:
     uses: ./.github/workflows/callable_workflow.yml
     with:
       name: 'Jimin'
-    outputs:
-      greetingMessage: ${{ needs.useCallable.outputs.greetingMessage }}
-    steps:
-      - name: Display greeting
-        run: echo "${{ needs.useCallable.outputs.greetingMessage }}"
+
