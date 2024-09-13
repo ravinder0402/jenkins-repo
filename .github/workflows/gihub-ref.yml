@@ -1,0 +1,11 @@
+name: github Reference
+on:
+  push:
+    branches:
+      - main
+jobs:
+  determine-ref:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Display Github Ref
+      run: echo "GitHub Ref:${{ github.ref }}"
