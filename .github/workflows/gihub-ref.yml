@@ -9,3 +9,6 @@ jobs:
     steps:
     - name: Display Github Ref
       run: echo "GitHub Ref:${{ github.ref }}"
+    - name: Extract Branch Name
+      if: startsWith(github.ref, 'refs/heads/')
+      run: echo "Branch Name:${{ github.ref }}" | sed 's|refs/heads/||"
