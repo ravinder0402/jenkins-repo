@@ -15,6 +15,10 @@ on:
 jobs:
   greet:
     runs-on: ubuntu-latest
+    outputs:
+      greetingMessage: ${{ steps.greeting.outputs.message }}
     steps:
-    - id: greeting
-      run: echo "::set-output name=message::Hello, ${{ inputs.name }}"
+      - id: greeting
+        run: |
+          echo "message=Hello, ${{ inputs.name }}" >> $GITHUB_ENV
+          echo "::set-output name=message::Hello, ${{ inputs.name }}"
