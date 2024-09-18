@@ -5,22 +5,15 @@ on:
     branches:
     - main
 jobs:
-  determine-ref:
+  updating-job:
     runs-on: ubuntu-latest
     steps:
-    - name: Display Github Ref
-      run: echo "GitHub Ref:${{ github.ref }}"
+    - name: Updating system
+      run: sudo apt update
 
-    - name: Display Github Base Ref
-      run: echo "Github Base Ref:${{ github.base_ref }}"
-
-    - name: Display Github Head Ref
-      run: echo "Github Head Ref:${{ github.head_ref }}"
-
-    - name: Extract Branch Name
-      if: startsWith(github.ref, 'refs/heads/')
-      run: echo "Branch Name:${{ github.ref }}" | sed 's|refs/heads/||'
-
-    - name: Extract Tag Name
-      if: startsWith(github.ref, 'refs/tags/')
-      run: echo "Tag Name:${{ github.ref }}" | sed 's|refs/tags/||'
+  checking-java-version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checking java version
+      run: java --version
+      
