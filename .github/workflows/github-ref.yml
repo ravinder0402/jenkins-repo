@@ -10,12 +10,16 @@ jobs:
     steps:
     - name: Updating system
       run: sudo apt update
+    - name: Installing python3.11
+      run:  sudo apt install python3.11 -y
+    - name: Checking python  version
+      run:  python3 --version
 
-  checking-java-version:
+  checking-python-version:
     runs-on: ubuntu-latest
     needs: updating-job
     steps:
-    - name: Checking java version
+    - name: Checking python  version
       run:  python3 --version
 
       
