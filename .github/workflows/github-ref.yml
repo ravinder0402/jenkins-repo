@@ -20,5 +20,9 @@ jobs:
     name: Viewing Result
     runs-on: ubuntu-latest
     steps:
+      - name: homework
+        uses: actions/download-artifacts@v3
+        with:
+          name: homework
       - shell: bash
         run: cat math-homework.txt
