@@ -16,5 +16,5 @@ jobs:
     needs: updating-job
     steps:
     - name: Checking java version
-      run: echo java --version
+      run:  java --version
       
