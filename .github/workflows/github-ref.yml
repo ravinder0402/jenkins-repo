@@ -1,29 +1,30 @@
-name: Share data between jobs
-
+name: Introduction file
 on: [push]
-
 jobs:
   job_1:
-    name: Add 3 and 7
     runs-on: ubuntu-latest
     steps:
       - shell: bash
         run: |
-          expr 3 + 7 > math-homework.txt
-      - name: Upload math result for job 1
-        uses: actions/upload-artifact@v3
-        with:
-          name: homework
-          path: math-homework.txt
+            echo "my name is ravinder" > ravinder.txt
 
-  job_2: 
-    name: Viewing Result
+      - name: storing artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ravinder
+          path: ravinder.txt
+
+  job_2:
     needs: job_1
     runs-on: ubuntu-latest
     steps:
-      - name: homework
-        uses: actions/download-artifact@v3
+      - name: downloading artifacts
+        uses: actions/download-artifact@v4
         with:
-          name: homework
+          name: ravinder
       - shell: bash
-        run: cat math-homework.txt
+        run: |
+           cat ravinder.txt
+
+        
+            
