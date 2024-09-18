@@ -15,3 +15,10 @@ jobs:
         with:
           name: homework
           path: math-homework.txt
+
+  job_2: 
+    name: Viewing Result
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: cat math-homework.txt
