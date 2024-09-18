@@ -16,5 +16,6 @@ jobs:
     needs: updating-job
     steps:
     - name: Checking java version
-      run:  java --version
+      run:  python3 --version
+
       
