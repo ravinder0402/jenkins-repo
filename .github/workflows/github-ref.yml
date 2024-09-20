@@ -11,6 +11,13 @@ jobs:
 
       - name: Checking the version of Python
         run: python --version
+  job_2:
+    runs-on: ubuntu-latest
+    needs: job_1
+    steps:
+      - name: checking python version
+        run: python3 --version
+      
 
         
             
