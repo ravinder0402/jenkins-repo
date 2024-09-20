@@ -1,56 +1,48 @@
-name: Python Workflow
+name: Download and Use Python 3.11
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
-  install-python:
+  download_python:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Create directories for Python installation
+      - name: Download and Install Python 3.11
         run: |
-          mkdir -p $HOME/python/bin
-          mkdir -p $HOME/python/lib
-          mkdir -p $HOME/artifacts
+          sudo apt-get update
+          sudo apt-get install -y software-properties-common
+          sudo add-apt-repository ppa:deadsnakes/ppa -y
+          sudo apt-get update
+          sudo apt-get install -y python3.11 python3.11-distutils python3.11-venv python3.11-dev
 
-      - name: Download Python 3.11
+      - name: Create Python 3.11 Directory
         run: |
-          wget https://www.python.org/ftp/python/3.11.0/Python-3.11.0.tgz
-          tar -xzf Python-3.11.0.tgz
-          cd Python-3.11.0
-          ./configure --enable-optimizations --prefix=$HOME/python
-          make altinstall
-          cd ..
-          rm -rf Python-3.11.0 Python-3.11.0.tgz
+          mkdir python3.11
+          cp -r /usr/bin/python3.11 python3.11/
+          cp -r /usr/lib/python3.11 python3.11/
+          cp -r /usr/local/bin/pip3.11 python3.11/
 
-      - name: Check Python version
-        run: |
-          $HOME/python/bin/python3.11 --version
-
-      - name: List Python bin directory
-        run: ls -l $HOME/python/bin
-
-      - name: Copy Python binary to artifacts directory
-        run: |
-          cp $HOME/python/bin/python3.11 $HOME/artifacts/python3.11
-
-      - name: Upload Python as an artifact
-        uses: actions/upload-artifact@v3
+      - name: Upload Python Artifact
+        uses: actions/upload-artifact@v2
         with:
-          name: python-3.11
-          path: $HOME/artifacts/python3.11  
+          name: python-artifact
+          path: python3.11
 
-  use-python:
+  use_python:
     runs-on: ubuntu-latest
-    needs: install-python
+    needs: download_python
     steps:
-      - name: Download Python artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: python-3.11
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Check Python version
+      - name: Download Python Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: python-artifact
+
+      - name: Check Python Version
         run: |
-          $HOME/artifacts/python3.11 --version
+          ./python3.11/python3.11 --version
+          # You can add additional steps here to run your Python scripts or tests
