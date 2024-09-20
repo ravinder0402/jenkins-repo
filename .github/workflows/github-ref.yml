@@ -28,11 +28,7 @@ jobs:
       - name: Check Python version
         run: |
           /usr/local/python/bin/python3.11 --version
-          
-      - name: Checking the location of python
-        run: find / -name "python3.11" 2>/dev/null
-
-          
+ 
       - name: Upload Python installation as an artifact
         uses: actions/upload-artifact@v3
         with:
