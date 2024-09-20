@@ -1,30 +1,11 @@
-name: Introduction file
+name: Installing Python
 on: [push]
 jobs:
   job_1:
     runs-on: ubuntu-latest
     steps:
-      - shell: bash
-        run: |
-            echo "my name is ravinder" > ravinder.txt
-
-      - name: storing artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: ravinder
-          path: ravinder.txt
-
-  job_2:
-    needs: job_1
-    runs-on: ubuntu-latest
-    steps:
-      - name: downloading artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: ravinder
-      - shell: bash
-        run: |
-           cat ravinder.txt
+      - name: Checking version of python
+        run: python3 --verson
 
         
             
