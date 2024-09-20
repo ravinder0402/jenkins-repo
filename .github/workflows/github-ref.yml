@@ -43,5 +43,4 @@ jobs:
           name: python-3.11
 
       - name: Check Python version
-        run: |
-          /usr/local/python/bin/python3.11 --version
+        run: python3.11 --version
