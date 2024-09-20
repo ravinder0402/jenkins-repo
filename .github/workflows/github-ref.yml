@@ -13,6 +13,7 @@ jobs:
         run: |
           mkdir -p $HOME/python/bin
           mkdir -p $HOME/python/lib
+          mkdir -p $HOME/artifacts
 
       - name: Download Python 3.11
         run: |
@@ -27,14 +28,19 @@ jobs:
       - name: Check Python version
         run: |
           $HOME/python/bin/python3.11 --version
+
       - name: List Python bin directory
         run: ls -l $HOME/python/bin
+
+      - name: Copy Python binary to artifacts directory
+        run: |
+          cp $HOME/python/bin/python3.11 $HOME/artifacts/python3.11
 
       - name: Upload Python as an artifact
         uses: actions/upload-artifact@v3
         with:
           name: python-3.11
-          path: $HOME/python/bin/python3.11  
+          path: $HOME/artifacts/python3.11  
 
   use-python:
     runs-on: ubuntu-latest
@@ -47,4 +53,4 @@ jobs:
 
       - name: Check Python version
         run: |
-          $HOME/python/bin/python3.11 --version
+          $HOME/artifacts/python3.11 --version
