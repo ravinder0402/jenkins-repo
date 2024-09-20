@@ -14,6 +14,8 @@ jobs:
           sudo mkdir -p /usr/local/python/bin
           sudo mkdir -p /usr/local/python/lib
           sudo chmod -R 755 /usr/local/python
+          # Set ownership to the current user
+          sudo chown -R $(whoami):$(whoami) /usr/local/python
 
       - name: Download Python 3.11
         run: |
