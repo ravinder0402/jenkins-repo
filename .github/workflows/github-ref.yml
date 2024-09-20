@@ -4,8 +4,8 @@ jobs:
   job_1:
     runs-on: ubuntu-latest
     steps:
-      - shell: bash
-        run: python3 --verson
+      - name: Checking the version of python
+        run: python3 --version
 
         
             
