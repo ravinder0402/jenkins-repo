@@ -29,7 +29,7 @@ jobs:
       - name: Check Python version
         run: |
           /usr/local/python/bin/python3.11 --version
-          /usr/local/python/bin/pip3 --version
+          
 
       - name: Upload Python installation as an artifact
         uses: actions/upload-artifact@v3
@@ -52,4 +52,4 @@ jobs:
       - name: Check Python version
         run: |
           python3.11 --version
-          pip3 --version
+        
