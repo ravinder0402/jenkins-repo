@@ -13,7 +13,6 @@ jobs:
         run: |
           sudo mkdir -p /usr/local/python
           sudo chmod -R 755 /usr/local/python
-          # Set ownership to the current user
           sudo chown -R $(whoami):$(whoami) /usr/local/python
 
       - name: Download Python 3.11
@@ -30,7 +29,6 @@ jobs:
         run: |
           /usr/local/python/bin/python3.11 --version
           
-
       - name: Upload Python installation as an artifact
         uses: actions/upload-artifact@v3
         with:
@@ -51,5 +49,6 @@ jobs:
 
       - name: Check Python version
         run: |
-          python3.11 --version
-        
+          # Directly reference the installed Python executable
+          /usr/local/python/bin/python3.11 --version
+          /usr/local/python/bin/pip3 --version
