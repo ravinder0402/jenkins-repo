@@ -15,6 +15,7 @@ jobs:
           sudo chmod -R 755 /usr/local/python
           # Set ownership to the current user
           sudo chown -R $(whoami):$(whoami) /usr/local/python
+
       - name: Download Python 3.11
         run: |
           wget https://www.python.org/ftp/python/3.11.0/Python-3.11.0.tgz
@@ -24,6 +25,7 @@ jobs:
           make altinstall
           cd ..
           rm -rf Python-3.11.0 Python-3.11.0.tgz
+
       - name: Upload Python installation as an artifact
         uses: actions/upload-artifact@v3
         with:
@@ -39,7 +41,10 @@ jobs:
         with:
           name: python-installation
 
+      - name: Add Python to PATH
+        run: echo "/usr/local/python/bin" >> $GITHUB_PATH
+
       - name: Check Python version
         run: |
-          # Make sure to reference the correct path for the downloaded artifact
-          ./python-installation/bin/python3.11 --version
+          python3.11 --version
+          pip3 --version
