@@ -30,7 +30,7 @@ jobs:
           /usr/local/python/bin/python3.11 --version
           
       - name: Checking the location of python
-        run: whereis python3
+        run: whereis python3.11
           
       - name: Upload Python installation as an artifact
         uses: actions/upload-artifact@v3
@@ -49,7 +49,7 @@ jobs:
         with:
           name: python-installation
       - name: Checking the location of python
-        run: whereis python3
+        run: whereis python3.11
 
       - name: Add Python to PATH
         run: echo "/usr/local/python/bin" >> $GITHUB_PATH
