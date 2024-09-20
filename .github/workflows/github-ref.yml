@@ -47,5 +47,5 @@ jobs:
 
       - name: Check Python version
         run: |
-          # Adjust the path based on where the artifact is extracted
-          ./python-installation/bin/python3.11 --version
+          # Use the correct path for the Python binary
+          ./bin/python3.11 --version
