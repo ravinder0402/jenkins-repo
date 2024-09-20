@@ -28,12 +28,16 @@ jobs:
       - name: Check Python version
         run: |
           /usr/local/python/bin/python3.11 --version
+      - name: Checking the location of python
+        run: whereis python3.11.0 
           
       - name: Upload Python installation as an artifact
         uses: actions/upload-artifact@v3
         with:
           name: python-installation
           path: /usr/local/python
+          
+     
 
   use-python:
     runs-on: ubuntu-latest
@@ -43,12 +47,15 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: python-installation
+      - name: Checking the location of python
+        run: whereis python3.11.0 
 
       - name: Add Python to PATH
         run: echo "/usr/local/python/bin" >> $GITHUB_PATH
+        
 
       - name: Check Python version
         run: |
           # Directly reference the installed Python executable
           /usr/local/python/bin/python3.11 --version
-          /usr/local/python/bin/pip3 --version
+        
