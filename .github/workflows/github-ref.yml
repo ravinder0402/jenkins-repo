@@ -26,6 +26,11 @@ jobs:
           cd ..
           rm -rf Python-3.11.0 Python-3.11.0.tgz
 
+      - name: Check Python version
+        run: |
+          /usr/local/python/bin/python3.11 --version
+          /usr/local/python/bin/pip3 --version
+
       - name: Upload Python installation as an artifact
         uses: actions/upload-artifact@v3
         with:
