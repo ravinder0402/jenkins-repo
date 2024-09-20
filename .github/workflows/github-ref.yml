@@ -11,9 +11,9 @@ jobs:
 
       - name: Create directories for Python installation
         run: |
-          sudo mkdir -p /usr/local/python
-          sudo mkdir -p /usr/local/lib/python3.11
-          sudo chmod -R 755 /usr/local/python /usr/local/lib/python3.11
+          sudo mkdir -p /usr/local/python/bin
+          sudo mkdir -p /usr/local/python/lib
+          sudo chmod -R 755 /usr/local/python
 
       - name: Download Python 3.11
         run: |
