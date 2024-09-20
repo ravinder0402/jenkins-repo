@@ -15,12 +15,15 @@ jobs:
         run: python3 --version
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            echo "No requirements.txt found. Skipping dependency installation."
+          fi
 
       - name: Save Python environment
-        run: |
-          pip freeze > requirements.txt
-        id: save_env
+        run: pip freeze > requirements.txt
 
       - name: Upload Python environment
         uses: actions/upload-artifact@v3
@@ -40,4 +43,11 @@ jobs:
       - name: Check Python version
         run: python3 --version
 
-  
+      - name: Install dependencies from artifact
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            echo "No requirements.txt found. Cannot install dependencies."
+            exit 1
+          fi
