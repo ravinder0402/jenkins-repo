@@ -9,19 +9,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Create directory for Python installation
+      - name: Create directories for Python installation
         run: |
           sudo mkdir -p /usr/local/python
-          sudo chmod +x /usr/local/python
+          sudo mkdir -p /usr/local/lib/python3.11
+          sudo chmod -R 755 /usr/local/python /usr/local/lib/python3.11
 
       - name: Download Python 3.11
         run: |
           wget https://www.python.org/ftp/python/3.11.0/Python-3.11.0.tgz
           tar -xzf Python-3.11.0.tgz
           cd Python-3.11.0
-          ./configure --enable-optimizations
+          ./configure --enable-optimizations --prefix=/usr/local/python
           make altinstall
-          sudo mv /usr/local/bin/python3.11 /usr/local/python/
           cd ..
           rm -rf Python-3.11.0 Python-3.11.0.tgz
 
@@ -29,7 +29,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: python-3.11
-          path: /usr/local/python/python3.11
+          path: /usr/local/python/bin/python3.11
 
   use-python:
     runs-on: ubuntu-latest
@@ -42,7 +42,4 @@ jobs:
 
       - name: Check Python version
         run: |
-          /usr/local/python/python3.11 --version
-
-
-
+          /usr/local/python/bin/python3.11 --version
