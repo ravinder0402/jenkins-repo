@@ -17,12 +17,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y python3.11 python3.11-distutils python3.11-venv python3.11-dev
 
-      - name: Create Python 3.11 Directory
+      - name: Create Python Directory
         run: |
           mkdir python3.11
-          cp /usr/bin/python3.11 python3.11/
-          cp -r /usr/lib/python3.11 python3.11/
-          cp /usr/local/bin/pip3.11 python3.11/
+          cp /usr/bin/python3.11 python3.11/python3
+          cp /usr/bin/pip3.11 python3.11/pip
 
       - name: Upload Python Artifact
         uses: actions/upload-artifact@v3
@@ -44,5 +43,5 @@ jobs:
 
       - name: Check Python Version
         run: |
-          ./python3.11/python3.11 --version
+          ./python3.11/python3 --version
           # You can add additional steps here to run your Python scripts or tests
