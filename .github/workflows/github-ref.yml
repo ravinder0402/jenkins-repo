@@ -44,4 +44,4 @@ jobs:
       - name: Check Python version
         run: |
           # Make sure to reference the correct path for the downloaded artifact
-          ./python-installation/bin/python3.11 --version
+          ./python-installation/bin/python3 --version
