@@ -41,7 +41,11 @@ jobs:
         with:
           name: python-installation
 
+      - name: List files in the current directory
+        run: |
+          ls -R
+
       - name: Check Python version
         run: |
-          # Make sure to reference the correct path for the downloaded artifact
-          ./python-installation/bin/python3 --version
+          # Adjust the path based on where the artifact is extracted
+          ./python-installation/bin/python3.11 --version
