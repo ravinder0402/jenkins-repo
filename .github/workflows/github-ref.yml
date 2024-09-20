@@ -5,7 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checking the version of python
-        run: python3 --version
+        uses: actions/setup-pyhton@v4
+        with:
+          python-version: '3.11'
+
+      - name: Checking the version of Python
+        run: python --version
 
         
             
