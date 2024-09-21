@@ -45,8 +45,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: python-installation
-      - name: Checking the location of python
-        run: find / -name "python3.11" 2>/dev/null
+  
 
       - name: Add Python to PATH
         run: echo "/usr/local/python/bin" >> $GITHUB_PATH
@@ -55,5 +54,5 @@ jobs:
       - name: Check Python version
         run: |
           # Directly reference the installed Python executable
-          /usr/local/python/bin/python3.11 --version
+          /home/runner/work/jenkins-repo/jenkins-repo/bin/python3.11 --version
         
