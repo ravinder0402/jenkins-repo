@@ -27,6 +27,7 @@ jobs:
 
       - name: Check Python version
         run: |
+          sudo  chmod +x /home/runner/work/jenkins-repo/jenkins-repo/bin/python3.11
           /usr/local/python/bin/python3.11 --version
  
       - name: Upload Python installation as an artifact
@@ -53,6 +54,6 @@ jobs:
 
       - name: Check Python version
         run: |
-          # Directly reference the installed Python executable
+          sudo  chmod +x /home/runner/work/jenkins-repo/jenkins-repo/bin/python3.11 
           /home/runner/work/jenkins-repo/jenkins-repo/bin/python3.11 --version
         
