@@ -14,12 +14,16 @@ jobs:
           wget https://www.python.org/ftp/python/3.11.0/Python-3.11.0.tgz
           tar -xzf Python-3.11.0.tgz
           cd Python-3.11.0
-          ./configure --enable-optimizations
-          make altinstall
-          sudo make altinstall
+          ./configure --prefix=$HOME/python3.11 --enable-optimizations
+          make
+          make install
           cd ..
-          sudo rm -rf Python-3.11.0 Python-3.11.0.tgz
+          rm -rf Python-3.11.0 Python-3.11.0.tgz
+
+      - name: Add Python to PATH
+        run: echo "$HOME/python3.11/bin" >> $GITHUB_PATH
 
       - name: Check the location of installed Python
         run: |
-          whereis python3.11
+          python3.11 --version
+          which python3.11
