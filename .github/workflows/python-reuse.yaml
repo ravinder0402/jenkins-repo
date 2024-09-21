@@ -9,25 +9,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
-      - name: Download Python 3.11
+      - name: Download and install Python 3.11
         run: |
           wget https://www.python.org/ftp/python/3.11.0/Python-3.11.0.tgz
           tar -xzf Python-3.11.0.tgz
           cd Python-3.11.0
-          ./configure --enable-optimizations 
-          
-          # Create the necessary directory for Python libraries
-          sudo mkdir -p /usr/local/lib/python3.11
-          sudo chmod -R 755 /usr/local/lib/python3.11
-
+          ./configure --enable-optimizations
           make altinstall
           cd ..
           rm -rf Python-3.11.0 Python-3.11.0.tgz
 
-      - name: Checking the location of installed Python
+      - name: Check the location of installed Python
         run: |
           whereis python3.11
 
-      - name: Check Python version
-        run: |
-          /usr/local/bin/python3.11 --version
+
