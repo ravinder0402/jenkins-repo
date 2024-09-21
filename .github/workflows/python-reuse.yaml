@@ -27,3 +27,25 @@ jobs:
         run: |
           python3.11 --version
           which python3.11
+
+      - name: Upload Python executable
+        uses: actions/upload-artifact@v3
+        with:
+          name: python3.11
+          path: $HOME/python3.11/bin/python3.11  # Adjust path if necessary
+
+  check-python:
+    runs-on: ubuntu-latest
+    needs: install-python
+    steps:
+      - name: Download Python artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: python3.11
+
+      - name: Check Python version
+        run: |
+          # Make the downloaded Python executable accessible
+          chmod +x ./python3.11
+          ./python3.11 --version
+          which ./python3.11
